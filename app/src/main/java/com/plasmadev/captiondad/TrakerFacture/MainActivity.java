@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
         but2 = (ImageView) findViewById(R.id.button2);
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 ConsulterFacture();
             }
         });
+
+
         but3 = (ImageView) findViewById(R.id.button3);
         but3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void DateDesEcheance(){
         Intent intent = new Intent(this , DateDesEcheancesActivity.class);
-        startActivity(intent);
-    }
-    public void ListeDesPayement(){
-        Intent intent = new Intent(this , ListedesPayerActivity.class);
         startActivity(intent);
     }
 }

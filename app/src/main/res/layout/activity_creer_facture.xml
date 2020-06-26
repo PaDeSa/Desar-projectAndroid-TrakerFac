@@ -38,18 +38,21 @@
             android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:inputType="textShortMessage"
             android:hint="type " />
         <EditText
             android:id="@+id/numero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="N°article "/>
 
         <EditText
-            android:id="@+id/total"
+            android:id="@+id/montant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Total en CFA"/>
+            android:inputType="number"
+            android:hint="Montant en CFA"/>
 
         <TextView
             android:id="@+id/textView"
@@ -58,6 +61,7 @@
             android:layout_above="@id/date"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="28dp"
+            android:inputType="date"
             android:text="date"
             android:textSize="30sp" />
         <Button
@@ -69,23 +73,23 @@
 
 
         <Button
-            android:id="@+id/btn"
-            android:layout_marginTop="50dp"
+            android:id="@+id/payer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Payer"
-            android:textColor="#FFF"
-            android:background="#E12929"
+            android:layout_height="28dp"
+            android:layout_marginTop="50dp"
+            android:background="#01D758"
             android:onClick="PayerFacture"
+            android:text="Payer"
+            android:textColor="#FFFf"
             tools:ignore="OnClick" />
         <Button
             android:id="@+id/credit"
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="S.O.S"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="#FFF"
+            android:text="Faire un achat a crédit"
+            android:textColor="#fff"
+            android:background="#E12929"
             android:onClick="impayee"
             tools:ignore="OnClick" />
 

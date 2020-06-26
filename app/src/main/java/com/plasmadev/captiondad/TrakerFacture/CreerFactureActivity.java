@@ -23,10 +23,13 @@ public class CreerFactureActivity extends AppCompatActivity implements DatePicke
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_creer_facture );
 
-        Button payer = (Button ) findViewById( R.id.btn );
+       final EditText type = (EditText) findViewById( R.id.type );
+        final EditText numero = (EditText) findViewById( R.id.numero );
+        final EditText montant = (EditText) findViewById( R.id.montant );
+        Button payer = (Button ) findViewById( R.id.payer );
         Button impayee = (Button) findViewById( R.id.credit );
 
-        Button button = (Button) findViewById(R.id.date);
+        final Button button = (Button) findViewById(R.id.date);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,37 +40,47 @@ public class CreerFactureActivity extends AppCompatActivity implements DatePicke
         payer.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( CreerFactureActivity.this, "Facture payer", Toast.LENGTH_SHORT ).show();
+                if(montant.getText().toString().equals( "" ) || numero.getText().toString().equals( "" )){
+                    Toast.makeText( CreerFactureActivity.this, "Réessayer Svp!", Toast.LENGTH_SHORT ).show();
+                }else{
+                    String typ = type.getText().toString();
+                    int num = Integer.parseInt( numero.getText().toString() );
+                    int mont = Integer.parseInt( montant.getText().toString() );
+
+                    Intent intent = new Intent( CreerFactureActivity.this, ConsulterLesFacActivity.class);
+                    intent.putExtra( "Type" , typ );
+                    intent.putExtra( "Numero" , num);
+                    intent.putExtra( "Montant" , mont );
+                    startActivityForResult( intent, 1  );
+                }
             }
 
         } );
         impayee.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText( CreerFactureActivity.this, "Facture impayée", Toast.LENGTH_SHORT ).show();
+                if(montant.getText().toString().equals( "" ) || numero.getText().toString().equals( "" )){
+                    Toast.makeText( CreerFactureActivity.this, "Réessayer Svp!", Toast.LENGTH_SHORT ).show();
+                }else{
+                    String typcr = type.getText().toString();
+                    int numcr = Integer.parseInt( numero.getText().toString() );
+                    int montcr = Integer.parseInt( montant.getText().toString() );
+                    String dtcr = button.getText().toString();
+
+                    Intent intent1 = new Intent( CreerFactureActivity.this, ConsulterLesFacActivity.class);
+                    intent1.putExtra( "Typecredit" , typcr );
+                    intent1.putExtra( "Numerocredit" , numcr);
+                    intent1.putExtra( "Montantcredit" , montcr );
+                    intent1.putExtra( "Datecredit",dtcr );
+
+                    startActivityForResult( intent1, 1  );
+
+                }
             }
+
         } );
     }
-    public void PayerFacture (View view){
 
-        EditText editText = (EditText)findViewById( R.id.type );
-        String str = editText.getText().toString();
-
-        EditText editText1 = (EditText)findViewById( R.id.numero );
-        int id = Integer.parseInt( editText1.getText().toString() );
-
-        EditText editText2 = (EditText)findViewById( R.id.total );
-        int id1 = Integer.parseInt( editText2.getText().toString() );
-
-        Intent intent = new Intent( this, ConsulterLesFacActivity.class );
-        startActivity( intent );
-
-
-        intent.putExtra( "type", str );
-        intent.putExtra( "numero", id );
-        intent.putExtra( "Montant" , id1 );
-
-    }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

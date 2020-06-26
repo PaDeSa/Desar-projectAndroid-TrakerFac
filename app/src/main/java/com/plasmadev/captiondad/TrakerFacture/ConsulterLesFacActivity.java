@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.List;
 
 public class ConsulterLesFacActivity extends AppCompatActivity {
@@ -17,19 +18,24 @@ public class ConsulterLesFacActivity extends AppCompatActivity {
         setContentView( R.layout.activity_consulter_les_fac );
 
         Intent intent = getIntent();
-        if (intent != null){
-            String str = "";
-            if (intent.hasExtra( "type" )){
-                str = intent.getStringExtra( "type" );
-            }
-            int num = intent.getIntExtra( "numero" , 1 );
-            int mont = intent.getIntExtra( "montant", 0 );
+            String type = intent.getStringExtra("Type");
+            int numero = intent.getIntExtra( "Numero" , 0 );
+            int montant = intent.getIntExtra( "Montant", 0 );
+
 
             TextView textView = (TextView) findViewById( R.id.textView);
-            textView.setText(str +" : Type ;" );
-            textView.setText( num+" : Numero d'aricle" );
-            textView.setText( mont+ " :Montant" );
+            textView.setText(type+ "\nMontant: "+montant +" FR\nN°article: " +numero );
 
-        }
+              Intent intent1 = getIntent();
+        String typecr = intent1.getStringExtra("Typecredit");
+        int numerocr = intent1.getIntExtra( "Numerocredit" , 0 );
+        int montantcr = intent1.getIntExtra( "Montantcredit", 0 );
+
+        TextView textView1 = (TextView) findViewById( R.id.textViewimpayer);
+        textView1.setText(typecr+ "\nMontant: "+montantcr +" FR\nN°article: " +numerocr);
+
+
+
+
     }
 }
