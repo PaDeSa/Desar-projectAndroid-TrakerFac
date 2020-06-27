@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 password = txtPassword.getText().toString().trim();
 
                 if (login.isEmpty() || password.isEmpty())
-                    Toast.makeText( LoginActivity.this,"Requiredg", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( LoginActivity.this,"Vous devez remplir les champs ", Toast.LENGTH_SHORT ).show();
                 else {
                     Intent intent = new Intent(LoginActivity.this , MainActivity.class);
                     startActivity(intent);

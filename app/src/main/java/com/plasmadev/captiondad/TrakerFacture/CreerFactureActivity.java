@@ -67,7 +67,7 @@ public class CreerFactureActivity extends AppCompatActivity implements DatePicke
                     int montcr = Integer.parseInt( montant.getText().toString() );
                     String dtcr = button.getText().toString();
 
-                    Intent intent1 = new Intent( CreerFactureActivity.this, ConsulterLesFacActivity.class);
+                    Intent intent1 = new Intent( CreerFactureActivity.this, DateDesEcheancesActivity.class);
                     intent1.putExtra( "Typecredit" , typcr );
                     intent1.putExtra( "Numerocredit" , numcr);
                     intent1.putExtra( "Montantcredit" , montcr );
